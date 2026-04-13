@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+    background: #0d0010;
+    min-height: 100dvh;
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100dvh;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-dancing {
+    font-family: 'Dancing Script', cursive;
+  }
+  .font-lato {
+    font-family: 'Lato', sans-serif;
+  }
+}
+
+/* Romantic gradient background */
+.bg-romantic {
+  background: radial-gradient(ellipse at 20% 20%, #3d0030 0%, #0d0010 40%),
+    radial-gradient(ellipse at 80% 80%, #2a0020 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, #1a0025 0%, #0d0010 80%);
+}
+
+/* Glowing text */
+.glow-text {
+  text-shadow: 0 0 20px rgba(255, 107, 157, 0.8),
+    0 0 40px rgba(255, 107, 157, 0.4),
+    0 0 80px rgba(255, 107, 157, 0.2);
+}
+
+.glow-text-soft {
+  text-shadow: 0 0 15px rgba(255, 182, 193, 0.6),
+    0 0 30px rgba(255, 107, 157, 0.3);
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 107, 157, 0.15);
+  box-shadow: 0 8px 32px rgba(255, 20, 80, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-card-bright {
+  background: rgba(255, 20, 80, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 107, 157, 0.25);
+  box-shadow: 0 8px 40px rgba(255, 20, 80, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 157, 0.4);
+  border-radius: 2px;
+}
+
+/* Envelope styles */
+.envelope-body {
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe4ec 100%);
+  border: 2px solid rgba(255, 107, 157, 0.4);
+  box-shadow: 0 20px 60px rgba(255, 20, 80, 0.25),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.envelope-flap {
+  background: linear-gradient(135deg, #ffb3cc 0%, #ff6b9d 100%);
+}
+
+/* Floating hearts keyframes */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(720deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0px); }
+  25% { transform: translateX(8px); }
+  75% { transform: translateX(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.4),
+      0 0 40px rgba(255, 107, 157, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 107, 157, 0.8),
+      0 0 80px rgba(255, 107, 157, 0.4),
+      0 0 120px rgba(255, 107, 157, 0.2);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.animate-float-up {
+  animation: floatUp linear infinite;
+}
+
+.animate-sway {
+  animation: sway ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle ease-in-out infinite;
+}
+
+/* Cursor line */
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Button glow */
+.btn-romantic {
+  background: linear-gradient(135deg, #ff6b9d 0%, #c94b8a 50%, #9b2d7f 100%);
+  box-shadow: 0 4px 20px rgba(255, 107, 157, 0.4),
+    0 0 0 0 rgba(255, 107, 157, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-romantic:hover, .btn-romantic:active {
+  box-shadow: 0 8px 32px rgba(255, 107, 157, 0.6),
+    0 0 0 8px rgba(255, 107, 157, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-romantic:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+}
